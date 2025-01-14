@@ -1,0 +1,79 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+#header {
+  background-color: #069b85;
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo a {
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+#navbar {
+  display: flex;
+}
+
+#navbar ul {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+}
+
+#navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+#navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Ícone de menu sanduíche (escondido em telas maiores) */
+#menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsivo: Navbar em telas menores */
+@media (max-width: 768px) {
+  #navbar {
+    display: none;
+    /* Esconde o menu por padrão */
+    flex-direction: column;
+    background-color: #069b85;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+
+  #navbar ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  #menu-toggle {
+    display: block;
+    /* Exibe o ícone sanduíche */
+  }
+
+  #navbar.active {
+    display: flex;
+    /* Exibe o menu quando ativo */
+  }
+}

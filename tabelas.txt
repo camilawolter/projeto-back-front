@@ -1,0 +1,67 @@
+CREATE DATABASE biblioteca;
+
+USE biblioteca;
+
+CREATE TABLE Users (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ 	name VARCHAR(30) NOT NULL,
+  	email VARCHAR(30) NOT NULL,
+  	password_user VARCHAR(15) DEFAULT '12345' NOT NULL,
+  	image VARCHAR(50) DEFAULT 'foto.png' NOT NULL,
+  	role ENUM('user', 'admin') DEFAULT 'user' NOT NULL
+);
+
+CREATE TABLE Book (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    genre VARCHAR(50) NOT NULL,
+    published_date DATE NOT NULL,
+    availability BOOLEAN DEFAULT TRUE NOT NULL,
+    quantity INT(50) NOT NULL,
+    image VARCHAR(50) DEFAULT 'foto.png' NOT NULL
+);
+
+CREATE TABLE Loan (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED,
+    book_id INT UNSIGNED,
+    FOREIGN KEY(user_id) REFERENCES Users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(book_id) REFERENCES Book(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    loan_date DATE NOT NULL,
+    return_date DATE NOT NULL,
+    status_load ENUM('pending', 'returned', 'approved') DEFAULT 'pending' NOT NULL
+);
+
+-- Inserindo usuários na tabela Users
+INSERT INTO Users (name, email, password_user, image, role) VALUES ('camila admin', 'admin@mail.com', '12345', 'foto.png', 'admin');
+
+INSERT INTO Users (name, email, password_user, image, role) VALUES ('camila user', 'user@mail.com', '12345', 'foto.png', 'user');
+
+-- Inserindo livros na tabela Book com descrição breve
+INSERT INTO Book (title, author, genre, published_date, availability, quantity, image, description) 
+VALUES 
+    ('O Senhor dos Anéis: A Sociedade do Anel', 'J.R.R. Tolkien', 'Fantasia', '1954-07-29', TRUE, 5, 'senhor_dos_aneis_1.jpg', 'A jornada épica de um hobbit e seus companheiros para destruir um anel mágico que ameaça a Terra-média.'),
+    ('O Senhor dos Anéis: As Duas Torres', 'J.R.R. Tolkien', 'Fantasia', '1954-11-11', TRUE, 5, 'senhor_dos_aneis_2.jpg', 'A continuação da jornada com desafios maiores e a luta contra as forças do mal.'),
+    ('O Senhor dos Anéis: O Retorno do Rei', 'J.R.R. Tolkien', 'Fantasia', '1955-10-20', TRUE, 5, 'senhor_dos_aneis_3.jpg', 'A batalha final pelo destino da Terra-média e o enfrentamento do mal em sua forma mais pura.'),
+    ('1984', 'George Orwell', 'Distopia', '1949-06-08', TRUE, 4, '1984.jpg', 'Um retrato sombrio de uma sociedade totalitária onde a liberdade e a privacidade estão extintas.'),
+    ('O Hobbit', 'J.R.R. Tolkien', 'Fantasia', '1937-09-21', TRUE, 3, 'hobbit.jpg', 'A aventura de Bilbo Bolseiro, um hobbit que se vê envolvido em uma busca para recuperar um tesouro roubado.'),
+    ('Harry Potter e a Pedra Filosofal', 'J.K. Rowling', 'Fantasia', '1997-06-26', TRUE, 10, 'harry_potter_1.jpg', 'Harry Potter descobre ser um bruxo e inicia sua jornada na escola de magia Hogwarts.'),
+    ('Harry Potter e a Câmara Secreta', 'J.K. Rowling', 'Fantasia', '1998-07-02', TRUE, 8, 'harry_potter_2.jpg', 'Harry Potter e seus amigos enfrentam mistérios e perigos dentro de Hogwarts em seu segundo ano.'),
+    ('O Código Da Vinci', 'Dan Brown', 'Mistério', '2003-03-18', TRUE, 6, 'codigo_da_vinci.jpg', 'Um professor de simbologia e uma criptóloga tentam desvendar um segredo milenar envolvendo a Igreja e a arte.'),
+    ('A Guerra dos Tronos', 'George R.R. Martin', 'Fantasia', '1996-08-06', TRUE, 7, 'guerra_dos_tronos.jpg', 'Intrigas políticas e batalhas épicas marcam a luta pelo trono de ferro em Westeros.'),
+    ('Cem Anos de Solidão', 'Gabriel García Márquez', 'Realismo Mágico', '1967-06-05', TRUE, 2, 'cem_anos_de_solidao.jpg', 'A saga da família Buendía, que atravessa gerações e se perde no tempo e no espaço, com elementos mágicos.'),
+    ('Orgulho e Preconceito', 'Jane Austen', 'Romance', '1813-01-28', TRUE, 4, 'orgulho_preconceito.jpg', 'Um romance clássico sobre amor e preconceitos na Inglaterra do século XIX.'),
+    ('O Pequeno Príncipe', 'Antoine de Saint-Exupéry', 'Ficção', '1943-04-06', TRUE, 6, 'pequeno_principe.jpg', 'A história encantadora de um pequeno príncipe que explora mundos e aprende lições valiosas.'),
+    ('Dom Quixote', 'Miguel de Cervantes', 'Clássico', '1605-01-16', TRUE, 3, 'dom_quixote.jpg', 'As aventuras do cavaleiro errante Dom Quixote e seu fiel escudeiro Sancho Pança.'),
+    ('O Grande Gatsby', 'F. Scott Fitzgerald', 'Ficção', '1925-04-10', TRUE, 5, 'grande_gatsby.jpg', 'Um olhar sobre o sonho americano e a decadência da elite dos anos 1920.'),
+    ('Moby Dick', 'Herman Melville', 'Aventura', '1851-10-18', TRUE, 2, 'moby_dick.jpg', 'A busca obsessiva do capitão Ahab pela baleia branca Moby Dick.'),
+    ('A Menina que Roubava Livros', 'Markus Zusak', 'Ficção Histórica', '2005-09-01', TRUE, 7, 'menina_que_roubava_livros.jpg', 'A história emocionante de uma jovem alemã durante a Segunda Guerra Mundial.'),
+    ('Percy Jackson e o Ladrão de Raios', 'Rick Riordan', 'Fantasia', '2005-06-28', TRUE, 9, 'percy_jackson_1.jpg', 'Percy Jackson descobre que é um semideus e embarca em uma aventura cheia de mitologia grega.'),
+    ('O Nome do Vento', 'Patrick Rothfuss', 'Fantasia', '2007-03-27', TRUE, 4, 'nome_do_vento.jpg', 'As memórias de Kvothe, um jovem prodígio que se torna uma lenda.'),
+    ('A Revolução dos Bichos', 'George Orwell', 'Satírica', '1945-08-17', TRUE, 6, 'revolucao_dos_bichos.jpg', 'Uma fábula política sobre a revolta dos animais contra seus opressores humanos.'),
+    ('Drácula', 'Bram Stoker', 'Terror', '1897-05-26', TRUE, 3, 'dracula.jpg', 'O clássico conto do vampiro Drácula e sua luta contra os caçadores.');  
+
+
+

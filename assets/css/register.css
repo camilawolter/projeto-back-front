@@ -1,0 +1,138 @@
+/* Reset e estilo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom right,  #1eae98, #069b85);
+}
+
+/* Contêiner principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1200px;
+  height: 90%;
+  background-color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Lado esquerdo com imagem e texto */
+.image-container {
+  flex: 1;
+  background: url('../images/background.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-text {
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 80%;
+}
+
+.welcome-text h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.welcome-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Lado direito com o formulário */
+.form-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input, button, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  border-color: #11998e;
+  outline: none;
+}
+
+button {
+  background-color: #11998e;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0f8379;
+}
+
+p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+a {
+  color: #11998e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .image-container {
+    height: 40%;
+    background-position: center;
+  }
+
+  .welcome-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-text p {
+    font-size: 0.9rem;
+  }
+}

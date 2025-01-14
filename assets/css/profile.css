@@ -1,0 +1,128 @@
+/* Reset básico para remover margens/paddings e normalizar o layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #eeeaea;
+  color: #333;
+  height: 100%;
+}
+
+/* Estilo para o título da página */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #2f3031;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Estilo para o formulário */
+form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  border: none;
+  padding: 5px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px auto;
+  display: block;
+  border: 4px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.drag-drop-area {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.drag-drop-area.drag-over {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+
+/* Adiciona uma margem ao redor do campo de imagem */
+input[type="file"] {
+  display: block;
+  margin: 20px auto;
+  padding: 5px;
+  width: auto;
+}
+
+/* Estilo para o botão de envio */
+button[type="submit"] {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #11998e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #10776e;
+}
+
+button[type="submit"]:active {
+  background-color: #14a69a;
+}
+
+.message {
+  margin: 10px auto;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  input[type="text"], input[type="email"], input[type="password"], input[type="file"], button[type="submit"] {
+    font-size: 0.9rem;
+  }
+}

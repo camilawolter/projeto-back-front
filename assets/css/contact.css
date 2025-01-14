@@ -1,0 +1,118 @@
+/* Estilo Geral */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eeeaea;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  color: #333;
+  padding: 20px 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2f3031;
+  padding: 10px;
+}
+
+main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Estilo para o formulário de contato */
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #14aa91;
+  outline: none;
+}
+
+.contact-form button {
+  margin-top: 15px;
+  background: #069b85;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #047a67;
+}
+
+.saved-data {
+  margin-top: 30px;
+}
+
+.saved-data p {
+  margin-top: 30px;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#clearDataButton {
+  background-color: #f56565;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#clearDataButton:hover {
+  background-color: #c53030;
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+  main {
+    padding: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 8px;
+  }
+
+  .contact-form button {
+    padding: 12px;
+  }
+}

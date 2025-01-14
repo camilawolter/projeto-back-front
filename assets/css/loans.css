@@ -1,0 +1,106 @@
+/* Aplicar margens e paddings globais sem sobrescrever diretamente */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eeeaea;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Cabeçalho */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2f3031;
+  padding: 10px;
+}
+
+/* Tabela de empréstimos */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+table thead {
+  background-color: #04a79a;
+  color: white;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+table th {
+  font-size: 1.1rem;
+}
+
+table td {
+  font-size: 1.1rem;
+}
+
+/* Mensagem de nenhum empréstimo */
+p {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+div#no-loans {
+  color: #ff4d4f;
+  padding: 120px;
+  margin: 120px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  table th, table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  table th, table td {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+}
