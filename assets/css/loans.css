@@ -87,6 +87,10 @@ div#no-loans {
   table {
     font-size: 0.9rem;
   }
+
+  div#no-result {
+    margin: 120px ;
+  }
 }
 
 /* Responsividade para telas muito pequenas */
@@ -102,5 +106,9 @@ div#no-loans {
 
   table {
     font-size: 0.85rem;
+  }
+
+  div#no-result {
+    margin: 120px ;
   }
 }

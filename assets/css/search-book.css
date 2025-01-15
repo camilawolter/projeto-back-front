@@ -90,21 +90,6 @@ a {
   margin-top: 40px;
 }
 
-#search-again-btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#search-again-btn:hover {
-  background-color: #0056b3;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
   h1 {
