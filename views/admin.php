@@ -66,7 +66,7 @@ if (isset($_POST['updateStatus'])) {
               unset($_SESSION['message']); ?>
             </div>
           <?php endif; ?>
-          <form method="POST" action="controllers/BookController.php" enctype="multipart/form-data" class="form-container">
+          <form method="POST" action="controllers/BookController.php" enctype="multipart/form-data" class="form-container" id="bookForm">
             <label for="title">Título:</label>
             <input type="text" id="title" name="title" required>
 
@@ -86,7 +86,7 @@ if (isset($_POST['updateStatus'])) {
             <input type="number" id="quantity" name="quantity" required>
 
             <label for="image">Imagem (URL ou caminho):</label>
-            <input type="file" id="image" name="image" accept="image/*">
+            <input type="file" id="image" name="image" accept="image/*" required>
 
             <button type="submit" name="addBook">Cadastrar Livro</button>
           </form>
@@ -197,6 +197,25 @@ if (isset($_POST['updateStatus'])) {
           }
         });
       });
+    });
+
+    document.getElementById('bookForm').addEventListener('submit', function(event) {
+        // Selecionando todos os campos de texto
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        let isValid = true;
+
+        // Verificando se os campos de texto possuem pelo menos 3 caracteres
+        textInputs.forEach(input => {
+            if (input.value.length < 3) {
+                isValid = false;
+                alert('Os campos de texto devem ter pelo menos 3 caracteres.');
+            }
+        });
+
+        // Se algum campo não for válido, impede o envio do formulário
+        if (!isValid) {
+            event.preventDefault();
+        }
     });
   </script>
 </body>

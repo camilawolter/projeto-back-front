@@ -75,7 +75,7 @@ h2 {
 
 .form-container label {
   font-size: 1rem;
-  font: bold;
+  font-weight: bold;
   color: #333;
   margin-bottom: 5px;
 }
@@ -88,6 +88,11 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
+}
+
+.container-form input:focus {
+  border-color: #14aa91;
+  outline: none;
 }
 
 .form-container input[type="file"] {
