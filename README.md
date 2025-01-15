@@ -12,11 +12,11 @@ Desenvolver uma plataforma digital eficiente e acessível para o gerenciamento d
 
 ### Objetivo Secundário
 
-Facilitar a busca por livros através de filtros intuitivos (título, autor e gênero).
+Facilitar a busca por livros através de filtros intuitivos (título, autor e gênero) e visualização e gerenciamento dos empréstimos.
 
 ## Como Configurar e Executar a Aplicação
 
-1. **Instalar o XAMPP**: O XAMPP é necessário para configurar um servidor Apache e um banco de dados MySQL para rodar a aplicação.
+1. **Instalar o XAMPP**: O XAMPP é necessário para configurar um servidor Apache e um banco de dados MySQL para rodar a aplicação. ([https://www.apachefriends.org/pt_br/index.html](https://www.apachefriends.org/pt_br/index.html))
    
 2. **Iniciar o XAMPP**: Após a instalação, inicie os módulos **Apache** e **MySQL** no painel de controle do XAMPP.
    
