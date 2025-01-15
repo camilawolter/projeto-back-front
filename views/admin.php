@@ -114,12 +114,12 @@ if (isset($_POST['updateStatus'])) {
               $books = allBooks($conexao); // Chama a função allBooks para listar todos os livros
               foreach ($books as $book) {
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($book['id']) . "</td>";
-                echo "<td>" . htmlspecialchars($book['title']) . "</td>";
-                echo "<td>" . htmlspecialchars($book['author']) . "</td>";
-                echo "<td>" . htmlspecialchars($book['genre']) . "</td>";
-                echo "<td>" . htmlspecialchars($book['published_date']) . "</td>";
-                echo "<td>" . htmlspecialchars($book['quantity']) . "</td>";
+                echo "<td data-label='ID'>" . htmlspecialchars($book['id']) . "</td>";
+                echo "<td data-label='Título'>" . htmlspecialchars($book['title']) . "</td>";
+                echo "<td data-label='Autor'>" . htmlspecialchars($book['author']) . "</td>";
+                echo "<td data-label='Gênero'>" . htmlspecialchars($book['genre']) . "</td>";
+                echo "<td data-label='Data Publicação'>" . htmlspecialchars($book['published_date']) . "</td>";
+                echo "<td data-label='Quantidade'>" . htmlspecialchars($book['quantity']) . "</td>";
                 echo "</tr>";
               }
               ?>
@@ -150,13 +150,13 @@ if (isset($_POST['updateStatus'])) {
               $loans = getAllLoans($conexao);
               foreach ($loans as $loan) {
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($loan['id']) . "</td>";
-                echo "<td>" . htmlspecialchars($loan['user_name']) . "</td>";
-                echo "<td>" . htmlspecialchars($loan['book_title']) . "</td>";
-                echo "<td>" . htmlspecialchars($loan['loan_date']) . "</td>";
-                echo "<td>" . htmlspecialchars($loan['return_date']) . "</td>";
-                echo "<td>" . htmlspecialchars($loan['status_load']) . "</td>";
-                echo "<td>
+                echo "<td  data-label='ID'>" . htmlspecialchars($loan['id']) . "</td>";
+                echo "<td data-label='Usuário'>" . htmlspecialchars($loan['user_name']) . "</td>";
+                echo "<td data-label='Livro'>" . htmlspecialchars($loan['book_title']) . "</td>";
+                echo "<td data-label='Data Empréstimos'>" . htmlspecialchars($loan['loan_date']) . "</td>";
+                echo "<td data-label='Data Devolução'>" . htmlspecialchars($loan['return_date']) . "</td>";
+                echo "<td data-label='Status'>" . htmlspecialchars($loan['status_load']) . "</td>";
+                echo "<td data-label='Ações'>
                     <form method='POST' style='display:inline;'>
                       <input type='hidden' name='loan_id' value='" . htmlspecialchars($loan['id']) . "'>
                       <select name='status' required>
