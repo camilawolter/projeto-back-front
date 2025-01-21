@@ -107,6 +107,7 @@ if (isset($_POST['updateStatus'])) {
                 <th>Gênero</th>
                 <th>Data Publicação</th>
                 <th>Quantidade</th>
+                <th>Deletar</th>
               </tr>
             </thead>
             <tbody>
@@ -120,6 +121,12 @@ if (isset($_POST['updateStatus'])) {
                 echo "<td data-label='Gênero'>" . htmlspecialchars($book['genre']) . "</td>";
                 echo "<td data-label='Data Publicação'>" . htmlspecialchars($book['published_date']) . "</td>";
                 echo "<td data-label='Quantidade'>" . htmlspecialchars($book['quantity']) . "</td>";
+                echo "<td data-label='Deletar'>
+                    <form method='POST' action='controllers/BookController.php' onsubmit='return confirm(\"Tem certeza que deseja excluir este livro?\");'>
+                      <input type='hidden' name='book_id' value='" . htmlspecialchars($book['id']) . "'>
+                      <button type='submit' name='deleteBook' class='delete-button'>Excluir</button>
+                    </form>
+                  </td>";
                 echo "</tr>";
               }
               ?>
@@ -200,22 +207,22 @@ if (isset($_POST['updateStatus'])) {
     });
 
     document.getElementById('bookForm').addEventListener('submit', function(event) {
-        // Selecionando todos os campos de texto
-        const textInputs = document.querySelectorAll('input[type="text"]');
-        let isValid = true;
+      // Selecionando todos os campos de texto
+      const textInputs = document.querySelectorAll('input[type="text"]');
+      let isValid = true;
 
-        // Verificando se os campos de texto possuem pelo menos 3 caracteres
-        textInputs.forEach(input => {
-            if (input.value.length < 3) {
-                isValid = false;
-                alert('Os campos de texto devem ter pelo menos 3 caracteres.');
-            }
-        });
-
-        // Se algum campo não for válido, impede o envio do formulário
-        if (!isValid) {
-            event.preventDefault();
+      // Verificando se os campos de texto possuem pelo menos 3 caracteres
+      textInputs.forEach(input => {
+        if (input.value.length < 3) {
+          isValid = false;
+          alert('Os campos de texto devem ter pelo menos 3 caracteres.');
         }
+      });
+
+      // Se algum campo não for válido, impede o envio do formulário
+      if (!isValid) {
+        event.preventDefault();
+      }
     });
   </script>
 </body>

@@ -55,3 +55,17 @@ function getBookById($conexao, $book_id)
     return [];
   }
 }
+
+// Função para excluir um livro pelo ID
+function deleteBook($conexao, $book_id)
+{
+  try {
+    $query = $conexao->prepare("DELETE FROM Book WHERE id = :book_id");
+    $query->bindParam(':book_id', $book_id, PDO::PARAM_INT);
+    $resultado = $query->execute();
+    return $resultado;
+  } catch (PDOException $e) {
+    echo 'Error: ' . $e->getMessage();
+    return false;
+  }
+}

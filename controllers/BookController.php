@@ -81,3 +81,19 @@ if (isset($_GET['id'])) {
 
   include('views/book_info.php');
 }
+
+// Verifica se a requisição é para excluir um livro
+if (isset($_POST['deleteBook'])) {
+  $book_id = $_POST['book_id'];
+  $deleteSuccess = deleteBook($conexao, $book_id);
+
+  session_start();
+  if ($deleteSuccess) {
+    $_SESSION['message'] = 'Livro excluído com sucesso!';
+  } else {
+    $_SESSION['message'] = 'Erro ao excluir o livro.';
+  }
+
+  header('Location: /projeto-back-front/index.php?page=admin');
+  exit();
+}
