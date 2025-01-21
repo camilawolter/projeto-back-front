@@ -67,3 +67,29 @@ function updateUser($conexao, $userId, $data)
     return false;
   }
 }
+
+// Função para obter todos os usuários
+function getAllUsers($conexao)
+{
+  try {
+    $query = $conexao->prepare("SELECT id, name FROM users");
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    echo 'Error: ' . $e->getMessage();
+    return [];
+  }
+}
+
+// Função para excluir um usuário pelo ID
+function deleteUser($conexao, $userId)
+{
+  try {
+    $query = $conexao->prepare("DELETE FROM users WHERE id = ?");
+    return $query->execute([$userId]);
+  } catch (PDOException $e) {
+    echo 'Error: ' . $e->getMessage();
+    return false;
+  }
+}
+

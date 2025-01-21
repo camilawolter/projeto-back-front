@@ -2,6 +2,7 @@
 require_once('config/db.php');
 require_once('config/loan_functions.php');
 require_once('config/book_functions.php');
+require_once('config/user_functions.php');
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
@@ -51,6 +52,7 @@ if (isset($_POST['updateStatus'])) {
     <div class="tabs">
       <div class="tab active" data-target="tab-cadastrar-livro">Cadastrar Livro</div>
       <div class="tab" data-target="tab-listar-livros">Listar Livros</div>
+      <div class="tab" data-target="tab-usuarios">Usuários</div>
       <div class="tab" data-target="tab-emprestimos">Empréstimos</div>
     </div>
 
@@ -128,6 +130,45 @@ if (isset($_POST['updateStatus'])) {
                     </form>
                   </td>";
                 echo "</tr>";
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-usuarios">
+      <div class="card">
+        <div class="card-header">Lista de Usuários</div>
+        <div class="card-body">
+          <table class="table-container">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Deletar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $users = getAllUsers($conexao); // Obtém todos os usuários
+
+              if (empty($users)) {
+                echo "<tr><td colspan='3'>Nenhum usuário encontrado.</td></tr>";
+              } else {
+                foreach ($users as $user) {
+                  echo "<tr>";
+                  echo "<td data-label='ID'>" . htmlspecialchars($user['id']) . "</td>";
+                  echo "<td data-label='Nome'>" . htmlspecialchars($user['name']) . "</td>";
+                  echo "<td data-label='Deletar'>
+                    <form method='POST' action='controllers/ProfileController.php' onsubmit='return confirm(\"Tem certeza que deseja excluir este usuário?\");'>
+                      <input type='hidden' name='user_id' value='" . htmlspecialchars($user['id']) . "'>
+                      <button type='submit' name='deleteUser' class='delete-button'>Excluir</button>
+                    </form>
+                  </td>";
+                  echo "</tr>";
+                }
               }
               ?>
             </tbody>
