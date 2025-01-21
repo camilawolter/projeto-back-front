@@ -22,16 +22,16 @@ if (isset($_POST['update'])) {
 
   // Verifica se a imagem foi enviada e faz o upload
   if ($image['tmp_name']) {
-    if (!is_dir('projeto-back-fornt/assets/images/')) {
-      mkdir('', 0755, true); // Cria a pasta se necessário
+    if (!is_dir('../assets/images/')) {
+      mkdir('../assets/images/', 0755, true); // Cria a pasta se necessário
   }
     // Garante que o nome do arquivo da imagem seja seguro para ser salvo
     $imageName = basename($image['name']);
-    $imagePath = 'projeto-back-fornt/assets/images/' . $imageName;
+    $imagePath = '../assets/images/' . $imageName;
     move_uploaded_file($image['tmp_name'], $imagePath);  // Envia a imagem para a pasta "assets/images"
   } else {
     // Se não enviar imagem, usa a imagem atual do banco de dados
-    $imagePath = null;
+    $imagePath = $user['image'];
   }
 
   // Atualiza as informações do usuário no banco de dados
