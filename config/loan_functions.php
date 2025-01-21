@@ -98,12 +98,40 @@ function getUserLoans($conexao, $userId)
   return $loans;
 }
 
-// Função para mudar o status do empréstimo
+// Atualizar o status do empréstimo e ajustar a quantidade de livros
 function updateLoanStatus($conexao, $loanId, $status)
 {
-  $query = $conexao->prepare("UPDATE Loan SET status_load = :status WHERE id = :loan_id");
-  $query->bindParam(':loan_id', $loanId, PDO::PARAM_INT);
-  $query->bindParam(':status', $status, PDO::PARAM_STR);
+  try {
+    // Iniciar transação
+    $conexao->beginTransaction();
 
-  return $query->execute();
+    // Atualizar o status do empréstimo
+    $query = $conexao->prepare("UPDATE Loan SET status_load = :status WHERE id = :loan_id");
+    $query->bindParam(':loan_id', $loanId, PDO::PARAM_INT);
+    $query->bindParam(':status', $status, PDO::PARAM_STR);
+    $query->execute();
+
+    // Verificar se o status foi alterado para "devolvido"
+    if ($status === 'returned') {
+      // Obter o ID do livro associado ao empréstimo
+      $bookQuery = $conexao->prepare("SELECT book_id FROM Loan WHERE id = :loan_id");
+      $bookQuery->bindParam(':loan_id', $loanId, PDO::PARAM_INT);
+      $bookQuery->execute();
+      $bookId = $bookQuery->fetchColumn();
+
+      // Incrementar a quantidade do livro
+      $updateBookQuery = $conexao->prepare("UPDATE Book SET quantity = quantity + 1 WHERE id = :book_id");
+      $updateBookQuery->bindParam(':book_id', $bookId, PDO::PARAM_INT);
+      $updateBookQuery->execute();
+    }
+
+    // Confirmar a transação
+    $conexao->commit();
+    return true;
+  } catch (PDOException $e) {
+    // Reverter a transação em caso de erro
+    $conexao->rollBack();
+    echo 'Erro: ' . $e->getMessage();
+    return false;
+  }
 }
